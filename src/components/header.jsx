@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SocialLinks from "./UI/SocialLinks";
 
 
 export default function Header() {
@@ -21,11 +22,7 @@ export default function Header() {
           <h4 className="text-gray text-xl uppercase font-kanit">Frontend Developer</h4>
           <p className="mt-2 text-lg leading-tight">2 years of experience  building responsive, interactive websites from the ground up.</p>
 
-          <div className="mt-16 flex gap-3">
-            <a href="https://github.com/RageBoy152" target="_blank"><Image src="github.svg" alt="GitHub logo" width={30} height={30} /></a>
-            <a href="https://www.linkedin.com/in/matthew-miller-87161b313/" target="_blank"><Image src="linkedin.svg" alt="LinkedIn logo" width={30} height={30} /></a>
-            <a href="mailto:mmilleruk@hotmail.com"><Image src="email.svg" alt="Email logo" width={30} height={30} /></a>
-          </div>
+          <SocialLinks tailwindClasses={"mt-16"} />
         </div>
 
 
