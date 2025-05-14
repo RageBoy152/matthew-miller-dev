@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const featuredTechnologies = [
   [
     { label: "React.JS", iconName: "React.svg" },
@@ -22,11 +24,11 @@ export default function TechStackList() {
     <div className="flex flex-col gap-8">
       {featuredTechnologies.map((techGroup, groupIndex) => (
 
-        <div key={groupIndex} className="flex gap-8 justify-end">
+        <div key={groupIndex} className={`flex gap-8 justify-start lg:justify-end flex-wrap gap-y-4 ${groupIndex+1 == featuredTechnologies.length ? "border-none" : "border-b"} border-gray/25 pb-8`}>
           {techGroup.map((tech, i) => (
 
-            <div key={tech.label + i} className="bg-place-black/50 uppercase flex items-center gap-3 py-2 ps-3 pe-6 w-fit">
-              <img src={`tech-icons/${tech.iconName}`} alt={`${tech.label} logo`} />
+            <div key={tech.label + i} className="bg-place-black/50 flex flex-col md:flex-row items-center gap-3 py-2 px-4 md:ps-3 md:pe-6 w-fit uppercase font-space-mono text-xs">
+              <Image width={40} height={40} src={`tech-icons/${tech.iconName}`} alt={`${tech.label} logo`} />
               <p>{tech.label}</p>
             </div>
 

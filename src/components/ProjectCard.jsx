@@ -9,15 +9,15 @@ export default function ProjectCard({ project }) {
       
       <div className="flex flex-col uppercase font-space-mono">
         <div className="flex items-center justify-between">
-          <h3 className="text-4xl text-white">{project.label}</h3>
+          <h3 className="text-2xl md:text-4xl text-white">{project.label}</h3>
 
-          <div className="flex gap-4 text-2xl text-gray">
+          <div className="flex gap-4 text-xl md:text-2xl text-gray">
             {project.github && <a className="transition-colors hover:text-accent" target="_blank" href={project.github}><i className="bi bi-github"></i></a>}
             {project.preview && <a className="transition-colors hover:text-accent" target="_blank" href={project.preview}><i className="bi bi-box-arrow-up-right"></i></a>}
           </div>
         </div>
 
-        <div className="flex gap-8 mt-6 text-gray text-sm">
+        <div className="flex flex-wrap gap-y-2 gap-8 mt-6 text-gray text-sm">
           {project.technologies.map((tech, i) => <p key={i}>{tech}</p>)}
         </div>
       </div>

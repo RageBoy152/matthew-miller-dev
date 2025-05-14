@@ -12,20 +12,26 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="w-7/12 ms-auto h-dvh">
-        <div className="w-8/12 mx-auto">
+      <main className="lg:w-7/12 lg:ms-auto h-dvh">
+        <div className="w-10/12 lg:w-8/12 mx-auto">
 
 
           {/*  ABOUT SECTION  */}
 
-          <section id="about" className="w-3/4 mx-auto relative pt-75 my-20">
-            <div className="bg-place-black aspect-4/5 w-1/2 shadow-accent absolute end-0 bottom-80 -z-10">headshot.jpg</div>
+          <section id="about" className="md:w-3/4 mx-auto flex flex-col gap-4 xs:block relative xs:pt-70 my-25">
+            <div className="
+              bg-place-black aspect-4/5 shadow-accent -z-10
+              text-gray font-space-mono text-sm
+              w-3/4 xs:w-3/5 sm:w-1/2 lg:w-4/5 xl:w-3/5
+              xs:absolute end-0 xs:bottom-75 sm:bottom-60 lg:bottom-[480px] 2lg:bottom-100 xl:bottom-80 2xl:bottom-70
+              flex justify-center items-center ms-auto xs:ms-0
+            ">headshot.jpg</div>
 
-            <div className="flex flex-col gap-3 w-3/5 bg-black">
+            <div className="flex flex-col gap-3 w-5/6 2xl:w-4/5 pt-4 pe-3 bg-black">
 
               <div className="uppercase mb-2">
                 <p className="text-accent font-space-mono">Hello_World</p>
-                <h2 className="font-kanit text-6xl">About Me</h2>
+                <h2 className="font-kanit text-5xl lg:text-6xl text-white">About Me</h2>
               </div>
 
               <p className="text-lg">Hello, I'm Matthew, an 18 year old frontend developer based in Scotland.  I've loved making things for the web since the first HTML class in high school.</p>
@@ -47,7 +53,7 @@ export default function Home() {
           <section id="my-work" className="py-16">
             <div className="uppercase mb-2">
               <p className="text-accent font-space-mono">My_Work</p>
-              <h2 className="font-kanit text-6xl">Experienced Creator</h2>
+              <h2 className="font-kanit text-5xl lg:text-6xl text-white">Experienced Creator</h2>
             </div>
 
             <ProjectsList />
@@ -59,7 +65,7 @@ export default function Home() {
           <section id="education" className="py-16">
             <div className="uppercase mb-2">
               <p className="text-accent font-space-mono">Learning</p>
-              <h2 className="font-kanit text-6xl">Relevant Education</h2>
+              <h2 className="font-kanit text-5xl lg:text-6xl text-white">Relevant Education</h2>
             </div>
 
             <TabSwitcher />
@@ -68,15 +74,22 @@ export default function Home() {
 
           {/*  CONTACT SECTION  */}
 
-          <section id="get-in-touch" className="py-16">
+          <section id="get-in-touch" className="py-24">
             <div className="uppercase mb-2 text-center">
               <p className="text-accent font-space-mono">Get_in_touch</p>
-              <h2 className="font-kanit text-6xl">Contact Me</h2>
+              <h2 className="font-kanit text-5xl lg:text-6xl text-white">Contact Me</h2>
             </div>
 
-            <SocialLinks tailwindClasses={"justify-center"} />
+            <SocialLinks tailwindClasses={"justify-center py-8"} />
 
             <ContactForm />
+          </section>
+
+
+          {/*  FOOTER  */}
+
+          <section className="py-12 text-gray/75 font-space-mono text-center uppercase text-xs">
+            <p><span className="font-blinker">&copy;</span> Matthew_Miller, 2025</p>
           </section>
 
         </div>
