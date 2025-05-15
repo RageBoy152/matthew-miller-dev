@@ -1,3 +1,5 @@
+import { Send } from "lucide-react";
+
 export default function ContactForm() {
   return (
     <form className="flex flex-col gap-5">
@@ -18,7 +20,7 @@ export default function ContactForm() {
         <p className="text-sm text-gray">0/500</p>
       </div>
 
-      <button type="submit" className="transition-colors cursor-pointer bg-place-black/20 hover:bg-place-black/80 border border-place-black py-3 px-4">Send Message</button>
+      <button type="submit" className="transition-colors cursor-pointer bg-place-black/20 hover:bg-place-black/80 border border-place-black py-3 px-4">Send Message <Send className="inline h-4" /></button>
 
     </form>
   );

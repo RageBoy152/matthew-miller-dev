@@ -23,7 +23,7 @@ export default function Home() {
               bg-place-black aspect-4/5 shadow-accent -z-10
               text-gray font-space-mono text-sm
               w-3/4 xs:w-3/5 sm:w-1/2 lg:w-4/5 xl:w-3/5
-              xs:absolute end-0 xs:bottom-75 sm:bottom-60 lg:bottom-[480px] 2lg:bottom-100 xl:bottom-80 2xl:bottom-70
+              xs:absolute end-0 xs:bottom-75 sm:bottom-60 lg:bottom-[480px] 2lg:bottom-100 xl:bottom-80 2xl:bottom-60
               flex justify-center items-center ms-auto xs:ms-0
             ">headshot.jpg</div>
 

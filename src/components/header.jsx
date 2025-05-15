@@ -4,6 +4,7 @@
 import Link from "next/link";
 import SocialLinks from "./UI/SocialLinks";
 import { useEffect, useRef, useState } from "react";
+import { AlignRight, ArrowRight, MoveRight, X } from "lucide-react";
 
 
 export default function Header({ isNavbar, isActive }) {
@@ -39,11 +40,17 @@ export default function Header({ isNavbar, isActive }) {
 
 
 
+  const getLinkClassnames = () => {
+    return "flex items-center " + (true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline");
+  }
+
+
+
   return (
     <>
       {!isNavbar && <Header isNavbar={true} isActive={navbarActive} />}
       
-      <header className={`lg:w-5/12 h-dvh bg-hero ${isNavbar ? `${isActive ? "block" : "hidden"} fixed top-0 z-10` : ""} lg:fixed lg:top-0`} data-is-navbar={isNavbar}>
+      <header className={`w-full lg:w-5/12 h-dvh bg-hero ${isNavbar ? `${isActive ? "block" : "hidden"} lg:hidden fixed top-0 z-10` : ""} lg:fixed lg:top-0`} data-is-navbar={isNavbar}>
 
         <div className="w-10/12 md:w-8/12 mx-auto h-full flex flex-col py-8 pb-16 md:py-16">
 
@@ -54,7 +61,10 @@ export default function Header({ isNavbar, isActive }) {
             <nav className="fixed top-0 start-0 lg:relative z-10 bg-none py-8 w-full uppercase font-space-mono text-gray">
               <div className="w-10/12 md:w-8/12 lg:w-full mx-auto flex items-center justify-between">
                 <p className="cursor-default">Matthew_Miller.dev</p>
-                <button className="lg:hidden cursor-pointer" onClick={() => setNavbarActive(!navbarActive)}><i className={`bi ${navbarActive ? "bi-x-lg" : "bi-filter-right"} text-2xl`}></i></button>
+                <button className="lg:hidden cursor-pointer" onClick={() => setNavbarActive(!navbarActive)}>
+                  {navbarActive ? <X className="h-6" /> : <AlignRight className="h-5" />}
+                  
+                </button>
               </div>
             </nav>
           )}
@@ -79,10 +89,10 @@ export default function Header({ isNavbar, isActive }) {
           {/*  HEADER NAV  */}
 
           <div className="flex flex-col w-fit ms-auto items-end gap-4 lg:gap-3 uppercase font-space-mono">
-            <Link href="#about" className={true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline"}>About <i className="bi bi-arrow-right lg:hidden"></i></Link>
-            <Link href="#my-work" className={true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline"}>My_work <i className="bi bi-arrow-right lg:hidden"></i></Link>
-            <Link href="#education" className={true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline"}>Education <i className="bi bi-arrow-right lg:hidden"></i></Link>
-            <Link href="#get-in-touch" className={true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline"}>Get_in_touch <i className="bi bi-arrow-right lg:hidden"></i></Link>
+            <Link href="#about" className={getLinkClassnames()}>About <MoveRight className="lg:hidden inline h-4 ms-1" /></Link>
+            <Link href="#my-work" className={getLinkClassnames()}>My_work <MoveRight className="lg:hidden inline h-4 ms-1" /></Link>
+            <Link href="#education" className={getLinkClassnames()}>Education <MoveRight className="lg:hidden inline h-4 ms-1" /></Link>
+            <Link href="#get-in-touch" className={getLinkClassnames()}>Get_in_touch <MoveRight className="lg:hidden inline h-4 ms-1" /></Link>
           </div>
           
         </div>
