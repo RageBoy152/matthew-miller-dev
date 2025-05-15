@@ -30,7 +30,7 @@ export const metadata = {       // TODO - placeholder metadata
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${spaceMono.variable} ${kanit.variable} ${blinker.variable} antialiased bg-black text-light-gray font-blinker`}>
         {children}
       </body>
