@@ -20,8 +20,8 @@ This is a web development portfolio website for Matthew Miller (me).
 - [X] Redo about section animations
 
 ### Other
-- [ ] Add tab switcher on education (use motion)
-- [ ] Add client-side validation to contact form
 - [ ] Add project showcase lightbox
+- [ ] Add client-side validation to contact form
 - [ ] Polish SEO
+- [X] Add tab switcher on education (use motion)
 - [X] Add projects timeline
