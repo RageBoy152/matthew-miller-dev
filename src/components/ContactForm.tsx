@@ -3,7 +3,7 @@ import { Send } from "lucide-react";
 
 // lib imports
 import * as motion from "motion/react-client";
-import { animOnVisible } from "@/utils/animate";
+import { animOnVisible, spinOnHover } from "@/utils/animate";
 
 // hook imports
 import { useReducedMotion } from "motion/react"
@@ -34,21 +34,12 @@ export default function ContactForm() {
 
       <motion.button
         {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.15, initialYOffset: "5%", once: true })}
-        whileHover="buttonHover"
+        whileHover="onhover"
         type="submit"
         className="transition-colors cursor-pointer bg-place-black/20 hover:bg-place-black/80 border border-place-black py-3 px-4 flex items-center justify-center gap-1"
       >
         Send Message
-        <motion.div variants={{
-          buttonHover: {
-            marginLeft: "0.5rem",
-            transition: {
-              duration: 0.2,
-              type: "spring",
-              bounce: 0
-            }
-          }
-        }}>
+        <motion.div {...spinOnHover({ reducedMotion: reducedMotion, duration: 0.5, offHoverDuration: 0.5, offHoverBounce: 0.3, bounce: 0.3 })}>
           <Send className="inline h-4" />
         </motion.div>
       </motion.button>

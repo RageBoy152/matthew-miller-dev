@@ -29,16 +29,16 @@ export default function Home() {
 
           {/*  ABOUT SECTION  */}
 
-          <section id="about" className="md:w-3/4 mx-auto flex flex-col gap-4 xs:block relative xs:pt-70 my-25">
+          <section id="about" className="md:w-3/4 mx-auto flex flex-col gap-4 xs:block relative xs:pt-70 mb-15 mt-40">
             <motion.div
               {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "5%", once: true })}
               className="
               bg-place-black aspect-4/5 shadow-accent -z-10
               text-gray font-space-mono text-sm
               w-3/4 xs:w-3/5 sm:w-1/2 lg:w-4/5 xl:w-3/5
-              xs:absolute end-0 xs:bottom-75 sm:bottom-60 lg:bottom-[480px] 2lg:bottom-100 xl:bottom-80 2xl:bottom-60
+              xs:absolute end-0 xs:bottom-80 sm:bottom-70 lg:bottom-[480px] 2lg:bottom-[440px] xl:bottom-80 2xl:bottom-70
               flex justify-center items-center ms-auto xs:ms-0"
->
+            >
               headshot.jpg
             </motion.div>
 

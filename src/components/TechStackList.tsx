@@ -50,7 +50,7 @@ export default function TechStackList() {
           {techGroup.map((tech, i) => (
 
             <motion.div whileHover="onhover" key={tech.label + i} className="bg-place-black/50 flex flex-col md:flex-row items-center gap-3 py-2 px-4 md:ps-3 md:pe-6 w-fit uppercase font-space-mono text-xs">
-              <motion.div {...spinOnHover(reducedMotion)}>
+              <motion.div {...spinOnHover({ reducedMotion: reducedMotion })}>
                 <Image width={40} height={40} src={`tech-icons/${tech.iconName}`} alt={`${tech.label} logo`}></Image>
               </motion.div>
               <p>{tech.label}</p>

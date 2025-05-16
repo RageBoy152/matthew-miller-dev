@@ -8,7 +8,8 @@ const featuredProjects: Project[] = [
     id: "jo-smith",
     label: "Jo Smith Photos",
     year: 2025,
-    monthRange: "MAR - APR",
+    monthStart: "MAR",
+    monthEnd: "APR",
     github: "https://github.com/RageBoy152/jo-smith-photography",
     preview: "https://josmithphotos.netlify.app/",
     technologies: ["Next.JS", "Tailwind_CSS", "Unsplash_API"],
@@ -21,7 +22,8 @@ const featuredProjects: Project[] = [
     id: "vinyls-online",
     label: "Vinyls Online",
     year: 2025,
-    monthRange: "FEB - MAR",
+    monthStart: "FEB",
+    monthEnd: "MAR",
     github: "",
     preview: "https://matthewmiller.atwebpages.com/index.php",
     technologies: ["PHP", "My_SQL", "Bootstrap"],
@@ -34,7 +36,8 @@ const featuredProjects: Project[] = [
     id: "multicast",
     label: "MultiCast",
     year: 2024,
-    monthRange: "JUL - OCT",
+    monthStart: "JUL",
+    monthEnd: "OCT",
     github: "https://github.com/RageBoy152/multicast",
     preview: "https://multicast.watch/",
     technologies: ["React.JS", "Tailwind_CSS", "Electron.JS"],
@@ -49,8 +52,8 @@ const featuredProjects: Project[] = [
 
 export default function ProjectsList() {
   return (
-    <div className="flex flex-col gap-32 w-4/6 ms-auto py-16">
-      {featuredProjects.map((project, i) => <ProjectCard key={project.id} projectIndex={i} project={project} />)}
+    <div className="flex flex-col w-full ms-auto py-16">
+      {featuredProjects.map((project, i) => <ProjectCard key={project.id} projectIndex={i} lastProject={i+1==featuredProjects.length} project={project} />)}
     </div>
   );
 }

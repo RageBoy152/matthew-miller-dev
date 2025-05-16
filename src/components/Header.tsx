@@ -129,11 +129,22 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
           <div className="flex flex-col w-fit ms-auto items-end gap-4 lg:gap-3 uppercase font-space-mono">
 
             {navLinks.map((link, index) => (
-              <motion.div key={link.href} {...animOnVisible({ reducedMotion: reducedMotion, delay: (index+1)/10, initialYOffset: "5%", once: !isNavbar })} whileHover="linkHover">
+              <motion.div key={link.href} {...animOnVisible({ reducedMotion: reducedMotion, delay: (index+1)/10, initialYOffset: "5%", once: !isNavbar })} whileHover="onhover">
                 <Link href={link.href} scroll={true} className={getLinkClassnames()}>
                   {link.label}
-                  <motion.div>
-                    <MoveRight className="lg:hidden inline h-4 ms-1" /> 
+
+                  {/* link animation */}
+                  <motion.div className="origin-right"
+                    variants={{
+                      onhover: { marginLeft: "0.25rem" },
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      type: "spring",
+                      bounce: 0
+                    }}
+                  >
+                    <MoveRight className="inline ms-1 h-4 lg:hidden" /> 
                   </motion.div>
                 </Link>
               </motion.div>

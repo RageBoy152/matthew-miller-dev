@@ -9,15 +9,15 @@ import { tiltOnHover } from "@/utils/animate";
 import { useReducedMotion } from "motion/react"
 
 
-export default function SocialLinks({ tailwindClasses }) {
+export default function SocialLinks({ tailwindClasses = "" }: { tailwindClasses?: string }) {
   const reducedMotion = useReducedMotion();
 
 
   return (
     <div className={`${tailwindClasses} flex gap-5 text-2xl`}>
-      <motion.a {...tiltOnHover(reducedMotion)} href="https://github.com/RageBoy152" target="_blank"><Github /></motion.a>
-      <motion.a {...tiltOnHover(reducedMotion)} href="https://www.linkedin.com/in/matthew-miller-87161b313/" target="_blank"><Linkedin /></motion.a>
-      <motion.a {...tiltOnHover(reducedMotion)} href="mailto:mmilleruk@hotmail.com"><Mail /></motion.a>
+      <motion.a className="transition-colors hover:text-accent" {...tiltOnHover(reducedMotion)} href="https://github.com/RageBoy152" target="_blank"><Github /></motion.a>
+      <motion.a className="transition-colors hover:text-accent" {...tiltOnHover(reducedMotion)} href="https://www.linkedin.com/in/matthew-miller-87161b313/" target="_blank"><Linkedin /></motion.a>
+      <motion.a className="transition-colors hover:text-accent" {...tiltOnHover(reducedMotion)} href="mailto:mmilleruk@hotmail.com"><Mail /></motion.a>
     </div>
   );
 }

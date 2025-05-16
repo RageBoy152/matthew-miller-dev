@@ -43,6 +43,7 @@ export function animOnVisible({...props}: animOnVisibleProps) {
 }
 
 
+
 // animate with subtle tilt on hover - used on social icons
 export function tiltOnHover(reducedMotion: boolean | null) {
   return {
@@ -57,20 +58,33 @@ export function tiltOnHover(reducedMotion: boolean | null) {
 }
 
 
-// animate with one 360 spin on hover - used on tech icons
-export function spinOnHover(reducedMotion: boolean | null) {
+
+type spinOnHoverProps = {
+  reducedMotion: boolean | null,
+  duration?: number,
+  bounce?: number,
+  offHoverDuration?: number,
+  offHoverBounce?: number
+}
+
+// animate with one 360 spin on hover
+export function spinOnHover({...props}: spinOnHoverProps) {
   return {
     variants: {
       onhover: {
         rotate: "360deg",
         scale: 1.1,
         transition: {
-          duration: reducedMotion ? 0 : 0.8,
+          duration: props.reducedMotion ? 0 : (props.duration ?? 0.8),
           type: "spring",
-          bounce: 0
+          bounce: props.bounce ?? 0.2
         }
       }
     },
-    transition: { duration: reducedMotion ? 0 : 0.25 }
+    transition: {
+      duration: props.reducedMotion ? 0 : (props.offHoverDuration ?? 0.25),
+      type: "spring",
+      bounce: props.offHoverBounce ?? 0.2
+    }
   }
 }
