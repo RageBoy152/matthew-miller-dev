@@ -3,13 +3,19 @@ import Image from "next/image";
 
 // lib imports
 import * as motion from "motion/react-client"
-import { getAnimOnScreenParentProps, getAnimOnScreenProps, spinOnHover } from "@/lib/animate";
+import { animOnVisible, spinOnHover } from "@/utils/animate";
 
 // hook imports
 import { useReducedMotion } from "motion/react"
 
 
-const featuredTechnologies = [
+type Technology = {
+  label: string;
+  iconName: string;
+}
+
+
+const featuredTechnologies: Technology[][] = [
   [
     { label: "React.JS", iconName: "React.svg" },
     { label: "Next.JS", iconName: "NextJS.svg" },
@@ -33,14 +39,11 @@ export default function TechStackList() {
 
 
   return (
-    <motion.div
-      {...getAnimOnScreenParentProps(undefined, true)}
-      className="flex flex-col gap-8"
-    >
+    <div className="flex flex-col gap-8">
       {featuredTechnologies.map((techGroup, groupIndex) => (
 
         <motion.div
-          {...getAnimOnScreenProps(reducedMotion, groupIndex/8, 0.4)}
+          {...animOnVisible({ reducedMotion: reducedMotion, delay: groupIndex/8, duration: 0.4, initialYOffset: "5%", once: true })}
           key={groupIndex}
           className={`flex gap-8 justify-start lg:justify-end flex-wrap gap-y-4 ${groupIndex+1 == featuredTechnologies.length ? "border-none" : "border-b"} border-gray/25 pb-8`}
         >
@@ -57,6 +60,6 @@ export default function TechStackList() {
         </motion.div>
 
       ))}
-    </motion.div>
+    </div>
   );
 }

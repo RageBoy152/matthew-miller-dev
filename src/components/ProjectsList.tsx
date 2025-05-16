@@ -1,9 +1,9 @@
 // component imports
-import ProjectCard from "./ProjectCard";
+import ProjectCard, { Project } from "./ProjectCard";
 
 
 
-const featuredProjects = [
+const featuredProjects: Project[] = [
   {
     id: "jo-smith",
     label: "Jo Smith Photos",
@@ -50,7 +50,7 @@ const featuredProjects = [
 export default function ProjectsList() {
   return (
     <div className="flex flex-col gap-32 w-4/6 ms-auto py-16">
-      {featuredProjects.map((project, i) => <ProjectCard key={project.id} project={project} />)}
+      {featuredProjects.map((project, i) => <ProjectCard key={project.id} projectIndex={i} project={project} />)}
     </div>
   );
 }

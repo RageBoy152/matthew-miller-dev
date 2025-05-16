@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 // lib imports
 import * as motion from "motion/react-client"
-import { tiltOnHover } from "@/lib/animate";
+import { tiltOnHover } from "@/utils/animate";
 
 // hook imports
 import { useReducedMotion } from "motion/react"
