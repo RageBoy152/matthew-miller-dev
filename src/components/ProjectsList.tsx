@@ -1,9 +1,12 @@
 // component imports
+import { setActiveProjectModalType } from "@/app/page";
 import ProjectCard, { Project } from "./ProjectCard";
 
 
 
-const featuredProjects: Project[] = [
+// hard coded data for featured projects
+
+export const featuredProjects: Project[] = [
   {
     id: "jo-smith",
     label: "Jo Smith Photos",
@@ -17,6 +20,7 @@ const featuredProjects: Project[] = [
       "Jo Smith is a fictitious photographer from Dundee who was looking for a website to showcase her portfolio and increase client outreach.",
       "I undertook this project as part of my HND course and was able to freely explore a variety of current tools and technologies. I used this as an opportunity to try expanding my knowledge with react and learned Next.JS."
     ],
+    images: [""]
   },
   {
     id: "vinyls-online",
@@ -31,6 +35,7 @@ const featuredProjects: Project[] = [
       "Vinyls Online is an online market place where users can either search for vinyls for their collection or upload their own vinyls for others to purchase.",
       "I used PHP and MySQL to bring this site to life after creating initial brand designs in 2023, creating a full interactive CRUD app with an account system."
     ],
+    images: [""]
   },
   {
     id: "multicast",
@@ -45,15 +50,16 @@ const featuredProjects: Project[] = [
       "As I found an interest in the SpaceX Starship program, I created Multicast to enhance my hobby of observing the 24/7 development of the program.",
       "Multicast allows desktop users to configure output layouts, add various YouTube streams of their choosing and simultaneously watch any selection of feeds."
     ],
+    images: [""]
   }
 ];
 
 
 
-export default function ProjectsList() {
+export default function ProjectsList({ setActiveProjectModal }: { setActiveProjectModal: setActiveProjectModalType }) {
   return (
     <div className="flex flex-col w-full ms-auto py-16">
-      {featuredProjects.map((project, i) => <ProjectCard key={project.id} projectIndex={i} lastProject={i+1==featuredProjects.length} project={project} />)}
+      {featuredProjects.map((project, i) => <ProjectCard setActiveProjectModal={setActiveProjectModal} key={project.id} projectIndex={i} lastProject={i+1==featuredProjects.length} project={project} />)}
     </div>
   );
 }

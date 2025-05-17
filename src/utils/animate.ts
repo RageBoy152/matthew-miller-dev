@@ -79,12 +79,11 @@ export function spinOnHover({...props}: spinOnHoverProps) {
           type: "spring",
           bounce: props.bounce ?? 0.2
         }
+      },
+      rest: {
+        rotate: 0,
+        scale: 1
       }
-    },
-    transition: {
-      duration: props.reducedMotion ? 0 : (props.offHoverDuration ?? 0.25),
-      type: "spring",
-      bounce: props.offHoverBounce ?? 0.2
     }
   }
 }

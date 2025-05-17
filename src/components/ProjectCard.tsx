@@ -1,5 +1,5 @@
 // component imports
-import { Github, SquareArrowOutUpRight } from "lucide-react";
+import { Expand, Github, SquareArrowOutUpRight } from "lucide-react";
 
 // lib imports
 import * as motion from "motion/react-client";
@@ -7,6 +7,7 @@ import { animOnVisible, tiltOnHover } from "@/utils/animate";
 
 // hook imports
 import { useReducedMotion } from "motion/react"
+import { setActiveProjectModalType } from "@/app/page";
 
 
 export type Project = {
@@ -19,10 +20,11 @@ export type Project = {
   technologies: string[];
   github?: string;
   preview?: string;
+  images: string[];
 }
 
 
-export default function ProjectCard({ project, projectIndex, lastProject }: { project: Project, projectIndex: number, lastProject: boolean }) {
+export default function ProjectCard({ project, projectIndex, lastProject, setActiveProjectModal }: { setActiveProjectModal: setActiveProjectModalType, project: Project, projectIndex: number, lastProject: boolean }) {
   const reducedMotion = useReducedMotion();
 
 
@@ -42,7 +44,9 @@ export default function ProjectCard({ project, projectIndex, lastProject }: { pr
       </div>
       <div className={`w-4/6 ${lastProject ? "" : "pb-32"}`}>
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, delay: projectIndex/5, initialYOffset: "10%", once: true })} className="flex flex-col gap-4">
-          <div className="bg-place-black aspect-[16/9] shadow-accent">
+
+          <div className="bg-place-black aspect-[16/9] shadow-accent relative group">
+            <button onClick={() => setActiveProjectModal(project.id)} aria-label="full screen" className="absolute w-full h-full bg-black/50 flex justify-center items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"><Expand /></button>
             <img className="w-full h-full object-cover" src={`featured-projects/${project.id}/preview.jpg`} alt={`${project.label} preview`} />
           </div>
           

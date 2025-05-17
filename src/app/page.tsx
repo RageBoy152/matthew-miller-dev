@@ -4,7 +4,7 @@
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
 import ProjectsList from "@/components/ProjectsList";
-import TabSwitcher from "@/components/TabSwitcher";
+import TabSwitcher from "@/components/EducationTabSwitch";
 import TechStackList from "@/components/TechStackList";
 import SocialLinks from "@/components/UI/SocialLinks";
 
@@ -14,13 +14,23 @@ import { animOnVisible } from "@/utils/animate";
 
 // hook imports
 import { useReducedMotion } from "motion/react"
+import ProjectGalleryModal from "@/components/UI/ProjectGalleryModal";
+import { useState } from "react";
+
+
+export type setActiveProjectModalType = (projectId: string | null) => void;
 
 
 export default function Home() {
   const reducedMotion = useReducedMotion();
 
+  const [activeProjectModal, setActiveProjectModal] = useState<string | null>(null);
+
   return (
     <>
+      <ProjectGalleryModal activeProjectModal={activeProjectModal} setActiveProjectModal={setActiveProjectModal} />
+
+
       <Header />
 
       <main className="lg:w-7/12 lg:ms-auto h-dvh">
@@ -89,7 +99,7 @@ export default function Home() {
               </motion.h2>
             </div>
 
-            <ProjectsList />
+            <ProjectsList setActiveProjectModal={setActiveProjectModal} />
           </section>
 
 

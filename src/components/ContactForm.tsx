@@ -39,7 +39,13 @@ export default function ContactForm() {
         className="transition-colors cursor-pointer bg-place-black/20 hover:bg-place-black/80 border border-place-black py-3 px-4 flex items-center justify-center gap-1"
       >
         Send Message
-        <motion.div {...spinOnHover({ reducedMotion: reducedMotion, duration: 0.5, offHoverDuration: 0.5, offHoverBounce: 0.3, bounce: 0.3 })}>
+        <motion.div
+          {...spinOnHover({ reducedMotion: reducedMotion, duration: 0.5, offHoverDuration: 0.5, offHoverBounce: 0.3, bounce: 0.3 })}
+          transition={{
+            duration: reducedMotion ? 0 : 0.5,
+            type: "spring",
+            bounce: 0.3
+          }}>
           <Send className="inline h-4" />
         </motion.div>
       </motion.button>

@@ -8,6 +8,7 @@ export type educationTabProps = {
   content: string[];
 }
 
+
 export default function EducationTab({ educationData, tailwindClasses }: { tailwindClasses?: string, educationData: educationTabProps }) {
   return (
     <div className={tailwindClasses}>

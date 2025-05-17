@@ -9,6 +9,9 @@ import EducationTab, { educationTabProps } from "./UI/EducationTab";
 import { motion, Variants } from "motion/react";
 
 
+
+// hard coded data for education tabs
+
 const educationData: educationTabProps[] = [
   {
     id: "hnd",

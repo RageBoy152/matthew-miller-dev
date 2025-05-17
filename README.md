@@ -10,18 +10,28 @@ This is a web development portfolio website for Matthew Miller (me).
 ### Hosted With
 - Netlify
 
+
 ### Todo (temp internal use)
 
 ### Animation
+- [ ] Spin on tap anim not reliable
 - [ ] Add background to fixed mobile partial nav after scroll past header
+
 - [X] Add hover animations to desktop nav
 - [X] Add margin start animation on hover on send message button
 - [X] Add mobile nav animation
 - [X] Redo about section animations
 
+
 ### Other
 - [ ] Add project showcase lightbox
+- [ ] Some mobile buttons are too small padding-wise
+
+- [ ] Add hero motion background
+- [ ] Change active links with scroll
+
 - [ ] Add client-side validation to contact form
 - [ ] Polish SEO
+
 - [X] Add tab switcher on education (use motion)
 - [X] Add projects timeline

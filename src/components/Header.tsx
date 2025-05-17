@@ -15,12 +15,15 @@ import * as motion from "motion/react-client"
 import { animOnVisible } from "@/utils/animate";
 
 
+
+// hard coded data for navbar links
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "My_work", href: "#my-work" },
   { label: "Education", href: "#education" },
   { label: "Get_in_touch", href: "#get-in-touch" }
 ]
+
 
 
 export default function Header({ isNavbar = false, isActive = false }: { isNavbar?: boolean, isActive?: boolean }) {

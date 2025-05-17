@@ -30,3 +30,12 @@
   --breakpoint-xs: 30rem;
   --breakpoint-2lg: 72rem;
 }
+
+
+
+@supports (scrollbar-width: thin) {
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #eee #444;
+  }
+}
