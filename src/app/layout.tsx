@@ -1,5 +1,8 @@
+// fonts and css
 import { Space_Mono, Kanit, Blinker } from "next/font/google";
 import "./globals.css";
+
+// types
 import { ReactNode } from "react";
 import { Metadata } from "next";
 

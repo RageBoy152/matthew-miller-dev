@@ -1,14 +1,13 @@
-// component imports
+// components
 import Image from "next/image";
-
-// hook imports
-import { useAnimation, motion } from "motion/react";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-
-// lib imports
-import { spinOnHover } from "@/utils/animate";
 import { Technology } from "../TechStackList";
 
+// motion
+import { useAnimation, motion } from "motion/react";
+import { spinOnHover } from "@/utils/animate";
+
+// hooks
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 
 export default function TechnologyPill({ tech, reducedMotion }: { tech: Technology, reducedMotion: boolean }) {

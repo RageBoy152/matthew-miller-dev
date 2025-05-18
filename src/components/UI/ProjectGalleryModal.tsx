@@ -1,10 +1,20 @@
+// react
+import { MouseEvent, useEffect, useState } from "react";
+
+// types
 import { setActiveProjectModalType } from "@/app/page";
+
+// icons
 import { X } from "lucide-react";
+
+// components
 import { featuredProjects } from "../ProjectsList";
 import { Project } from "../ProjectCard";
 import Image from "next/image";
-import { MouseEvent, useEffect, useState } from "react";
+
+// hooks
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+
 
 export default function ProjectGalleryModal({ activeProjectModal, setActiveProjectModal }: { activeProjectModal: string | null, setActiveProjectModal: setActiveProjectModalType }) {
   const isMediumScreen = useMediaQuery("(min-width: 768px)");
@@ -15,9 +25,12 @@ export default function ProjectGalleryModal({ activeProjectModal, setActiveProje
   // find project in featured projects by active id or return null
   const project: Project | null = featuredProjects.find((project) => project.id === activeProjectModal) ?? null;
 
+   
+  // stop scrolling on body when modal is active
   useEffect(() => {
     document.body.style.overflowY = activeProjectModal != null ? "hidden" : "auto";
   }, [activeProjectModal]);
+
 
   const closeModal = (e: MouseEvent<HTMLElement>, pageCover?: boolean) => {
     if ((pageCover && e.target === e.currentTarget) || !pageCover) {

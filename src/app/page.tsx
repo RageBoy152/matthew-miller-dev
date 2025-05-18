@@ -1,21 +1,21 @@
 "use client";
 
-// component imports
+
+// react
+import { useRef, useState } from "react";
+
+// component
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
 import ProjectsList from "@/components/ProjectsList";
 import TabSwitcher from "@/components/EducationTabSwitch";
 import TechStackList from "@/components/TechStackList";
 import SocialLinks from "@/components/UI/SocialLinks";
-
-// lib imports
-import * as motion from "motion/react-client"
-import { animOnVisible } from "@/utils/animate";
-
-// hook imports
-import { useReducedMotion } from "motion/react"
 import ProjectGalleryModal from "@/components/UI/ProjectGalleryModal";
-import { useState } from "react";
+
+// motion
+import { motion, useReducedMotion } from "motion/react";
+import { animOnVisible } from "@/utils/animate";
 
 
 export type setActiveProjectModalType = (projectId: string | null) => void;
@@ -24,23 +24,33 @@ export type setActiveProjectModalType = (projectId: string | null) => void;
 export default function Home() {
   const reducedMotion = useReducedMotion();
 
+  // id of active project - used for opening project modal
   const [activeProjectModal, setActiveProjectModal] = useState<string | null>(null);
+
+  // array of refs for each section
+  const sectionStartRefs = useRef<HTMLElement[]>([]);
+
+  // ref for portrait image elem - used for toggling mobile navbar bg
+  const portraitRef = useRef<HTMLDivElement>(null);
+
 
   return (
     <>
       <ProjectGalleryModal activeProjectModal={activeProjectModal} setActiveProjectModal={setActiveProjectModal} />
 
 
-      <Header />
+      <Header portraitRef={portraitRef} sectionStartRefs={sectionStartRefs} />
 
-      <main className="lg:w-7/12 lg:ms-auto h-dvh">
+      <main ref={(el) => { if (el) sectionStartRefs.current[0] = el; }} className="lg:w-7/12 lg:ms-auto min-h-dvh">
         <div className="w-10/12 lg:w-8/12 mx-auto">
 
 
           {/*  ABOUT SECTION  */}
 
           <section id="about" className="md:w-3/4 mx-auto flex flex-col gap-4 xs:block relative xs:pt-70 mb-15 mt-40">
+
             <motion.div
+              ref={portraitRef}
               {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "5%", once: true })}
               className="
               bg-place-black aspect-4/5 shadow-accent -z-10
@@ -77,6 +87,7 @@ export default function Home() {
               </motion.p>
             
             </div>
+
           </section>
 
 
@@ -89,7 +100,8 @@ export default function Home() {
 
           {/*  PROJECTS SECTION  */}
 
-          <section id="my-work" className="py-16">
+          <section ref={(el) => { if (el) sectionStartRefs.current[1] = el; }} id="my-work" className="py-16">
+
             <div className="uppercase mb-2">
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 My_Work
@@ -100,12 +112,14 @@ export default function Home() {
             </div>
 
             <ProjectsList setActiveProjectModal={setActiveProjectModal} />
+
           </section>
 
 
           {/*  EDUCATION SECTION  */}
 
-          <section id="education" className="py-16">
+          <section ref={(el) => { if (el) sectionStartRefs.current[2] = el; }} id="education" className="py-16">
+
             <div className="uppercase mb-2">
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 Learning
@@ -116,12 +130,14 @@ export default function Home() {
             </div>
 
             <TabSwitcher />
+              
           </section>
 
 
           {/*  CONTACT SECTION  */}
 
-          <section id="get-in-touch" className="py-24">
+          <section ref={(el) => { if (el) sectionStartRefs.current[3] = el; }} id="get-in-touch" className="py-24">
+
             <div className="uppercase mb-2 text-center">
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 Get_in_touch
@@ -134,6 +150,7 @@ export default function Home() {
             <SocialLinks tailwindClasses={"justify-center py-8"} />
 
             <ContactForm />
+
           </section>
 
 

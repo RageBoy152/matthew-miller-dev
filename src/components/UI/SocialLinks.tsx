@@ -1,12 +1,9 @@
-// component imports
+// icons
 import { Github, Linkedin, Mail } from "lucide-react";
 
-// lib imports
-import * as motion from "motion/react-client"
+// motion
+import { motion, useReducedMotion } from "motion/react"
 import { tiltOnHover } from "@/utils/animate";
-
-// hook imports
-import { useReducedMotion } from "motion/react"
 
 
 export default function SocialLinks({ tailwindClasses = "" }: { tailwindClasses?: string }) {

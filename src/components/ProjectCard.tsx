@@ -1,14 +1,12 @@
-// component imports
+// components
 import { Expand, Github, SquareArrowOutUpRight } from "lucide-react";
 
-// lib imports
-import * as motion from "motion/react-client";
+// motion
+import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible, tiltOnHover } from "@/utils/animate";
 
-// hook imports
-import { useReducedMotion } from "motion/react"
+// types
 import { setActiveProjectModalType } from "@/app/page";
-import { useState } from "react";
 
 
 export type Project = {

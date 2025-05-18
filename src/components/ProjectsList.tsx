@@ -1,5 +1,7 @@
-// component imports
+// types
 import { setActiveProjectModalType } from "@/app/page";
+
+// components
 import ProjectCard, { Project } from "./ProjectCard";
 
 

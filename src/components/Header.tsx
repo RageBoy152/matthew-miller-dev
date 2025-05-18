@@ -1,17 +1,19 @@
 "use client";
 
 
-// hook imports
-import { useEffect, useRef, useState } from "react";
-import { useReducedMotion, useTransform } from "motion/react"
+// react
+import { RefObject, useEffect, useRef, useState } from "react";
 
-// component imports
+// components
 import SocialLinks from "./UI/SocialLinks";
 import Link from "next/link";
-import { AlignRight, MoveRight, X } from "lucide-react";
+import NavBar from "./UI/NavBar";
 
-// lib imports
-import * as motion from "motion/react-client"
+// icons
+import { MoveRight } from "lucide-react";
+
+// motion
+import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible } from "@/utils/animate";
 
 
@@ -26,7 +28,18 @@ const navLinks = [
 
 
 
-export default function Header({ isNavbar = false, isActive = false }: { isNavbar?: boolean, isActive?: boolean }) {
+type HeaderProps = {
+  navbarActiveLinkIndex?: number;
+  sectionStartRefs?: RefObject<HTMLElement[]>;
+  portraitRef?: RefObject<HTMLDivElement | null>;
+  isNavbar?: boolean;
+  isActive?: boolean;
+  closeNav?: () => void;
+}
+
+
+
+export default function Header({ navbarActiveLinkIndex, sectionStartRefs, portraitRef, isNavbar = false, isActive = false, closeNav }: HeaderProps) {
   const reducedMotion = useReducedMotion();
 
 
@@ -39,7 +52,7 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
 
   // navbar active state
   const [navbarActive, setNavbarActive] = useState(false);
-  
+
 
 
   // check wrapped state of full name heading
@@ -61,20 +74,79 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
 
 
   // helper function for navlink classnames
-  const getLinkClassnames = () => {
-    return "flex items-center" + (true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline");
+  const getLinkClassnames = (activeLink: boolean) => {
+    return "flex items-center py-1 " + (!activeLink ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline");
   }
+
+
+
+  const [isNavbarFixed, setIsNavbarFixed] = useState(false);
+  
+  // check if we're scrolled passed hero - used to set mobile navbar bg color
+  useEffect(() => {
+    
+    const handleScroll = () => {
+      if (!portraitRef?.current) return;
+
+      const portraitTop = portraitRef.current.getBoundingClientRect().top;
+
+      setIsNavbarFixed(portraitTop < 50);
+    }
+
+    // add event listener and cleanup on unmount
+    addEventListener("scroll", handleScroll);
+    return () => removeEventListener("scroll", handleScroll);
+  }, [portraitRef]);
+
+  
+
+  // keep track of active link
+  const [activeLink, setActiveLink] = useState(0);
+  
+  // get page scroll pos relative to each section - only runs on real Header, not navbar Header
+  useEffect(() => {
+    if (sectionStartRefs == null) return;
+
+
+    const handleScroll = () => {
+      sectionStartRefs.current?.forEach((section, index) => {
+        if (index < activeLink) return;
+
+        // get y pos of section relative to top of the page
+        const sectionTop = section.getBoundingClientRect().top - sectionStartRefs.current[0].getBoundingClientRect().top;
+        
+        if (window.scrollY >= sectionTop) {
+          // scroll pos is higher than the current section pos
+          setActiveLink(index);
+          return;
+        }
+      });
+    };
+
+    addEventListener("scroll", handleScroll);
+
+    return () => {
+      removeEventListener("scroll", handleScroll);
+    }
+
+  }, [sectionStartRefs]);
+
+
+  // function passed to navbar header to set navbar active state to false
+  const closeNavbarInternally = () => setNavbarActive(false);
+
+
 
 
   return (
     <>
-      {!isNavbar && <Header isNavbar={true} isActive={navbarActive} />}
+      {!isNavbar && <Header closeNav={closeNavbarInternally} navbarActiveLinkIndex={activeLink} isNavbar={true} isActive={navbarActive} />}
       
       <motion.header
         initial={isNavbar && { display: "none", opacity: 0 }}
         animate={isNavbar && { display: isActive ? "block" : "none", opacity: isActive ? 1 : 0 }}
         transition={{ duration: 0.4, type: "spring", bounce: 0 }}
-        className={`w-full lg:w-5/12 h-dvh origin-top bg-hero ${isNavbar ? `${isActive ? "" : "hidden"} lg:hidden fixed top-0 z-10` : ""} lg:fixed lg:top-0`}
+        className={`w-full lg:w-5/12 h-dvh origin-top bg-hero ${isNavbar ? `${isActive ? "" : "hidden"} lg:hidden fixed top-0 z-20` : ""} lg:fixed lg:top-0`}
         data-is-navbar={isNavbar}
       >
 
@@ -83,15 +155,13 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
 
           {/*  HEADER TOP BRAND MARK  */}
           
-          {!isNavbar && (
-            <nav className="fixed top-0 start-0 lg:relative z-10 bg-none py-4 lg:py-8 w-full uppercase font-space-mono text-gray">
-              <div className="w-10/12 md:w-8/12 lg:w-full mx-auto flex items-center justify-between">
-                <p className="cursor-default">Matthew_Miller.dev</p>
-                <button className="lg:hidden cursor-pointer p-4" onClick={() => setNavbarActive(!navbarActive)}>
-                  {navbarActive ? <X className="h-6" /> : <AlignRight className="h-5" />}
-                </button>
-              </div>
-            </nav>
+          {!isNavbar ? (
+            <>
+              <NavBar isStatic={true} isFixed={false} isNavbar={false} />
+              <NavBar isStatic={false} isFixed={isNavbarFixed} isNavbar={false} navToggler={() => setNavbarActive(true)} />
+            </>
+          ) : (
+            <NavBar isStatic={true} isFixed={false} isNavbar={true} navToggler={closeNav} />
           )}
 
 
@@ -129,11 +199,11 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
 
           {/*  HEADER NAV  */}
 
-          <div className="flex flex-col w-fit ms-auto items-end gap-4 lg:gap-3 uppercase font-space-mono">
+          <div className="flex flex-col w-fit ms-auto items-end gap-1 uppercase font-space-mono">
 
             {navLinks.map((link, index) => (
               <motion.div key={link.href} {...animOnVisible({ reducedMotion: reducedMotion, delay: (index+1)/10, initialYOffset: "5%", once: !isNavbar })} whileHover="onhover">
-                <Link href={link.href} scroll={true} className={getLinkClassnames()}>
+                <Link onClick={closeNav} href={link.href} scroll={true} className={getLinkClassnames(isNavbar ? index == navbarActiveLinkIndex : index == activeLink)}>
                   {link.label}
 
                   {/* link animation */}

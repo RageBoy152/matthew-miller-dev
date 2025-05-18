@@ -1,11 +1,13 @@
 "use client";
 
 
-// hook imports
+// react
 import { useState } from "react";
 
-// component imports
+// components
 import EducationTab, { educationTabProps } from "./UI/EducationTab";
+
+// motion
 import { motion, Variants } from "motion/react";
 
 

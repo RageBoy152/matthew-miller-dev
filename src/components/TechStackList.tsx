@@ -1,10 +1,8 @@
-// component imports
+// components
 import TechnologyPill from "./UI/TechnologyPill";
 
-// lib imports
+// motion
 import { animOnVisible } from "@/utils/animate";
-
-// hook imports
 import { motion, useReducedMotion } from "motion/react"
 
 

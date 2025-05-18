@@ -1,12 +1,9 @@
-// component imports
+// components
 import { Send } from "lucide-react";
 
-// lib imports
-import * as motion from "motion/react-client";
+// motion
+import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible, spinOnHover } from "@/utils/animate";
-
-// hook imports
-import { useReducedMotion } from "motion/react"
 
 
 export default function ContactForm() {
