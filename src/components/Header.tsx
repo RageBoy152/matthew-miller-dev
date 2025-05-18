@@ -62,7 +62,7 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
 
   // helper function for navlink classnames
   const getLinkClassnames = () => {
-    return "flex items-center " + (true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline");
+    return "flex items-center" + (true ? "text-gray hover:lg:text-accent hover:lg:underline" : "text-accent underline");
   }
 
 
@@ -84,10 +84,10 @@ export default function Header({ isNavbar = false, isActive = false }: { isNavba
           {/*  HEADER TOP BRAND MARK  */}
           
           {!isNavbar && (
-            <nav className="fixed top-0 start-0 lg:relative z-10 bg-none py-8 w-full uppercase font-space-mono text-gray">
+            <nav className="fixed top-0 start-0 lg:relative z-10 bg-none py-4 lg:py-8 w-full uppercase font-space-mono text-gray">
               <div className="w-10/12 md:w-8/12 lg:w-full mx-auto flex items-center justify-between">
                 <p className="cursor-default">Matthew_Miller.dev</p>
-                <button className="lg:hidden cursor-pointer" onClick={() => setNavbarActive(!navbarActive)}>
+                <button className="lg:hidden cursor-pointer p-4" onClick={() => setNavbarActive(!navbarActive)}>
                   {navbarActive ? <X className="h-6" /> : <AlignRight className="h-5" />}
                 </button>
               </div>

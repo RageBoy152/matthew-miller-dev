@@ -3,7 +3,7 @@ import Image from "next/image";
 
 // hook imports
 import { useAnimation, motion } from "motion/react";
-import { useIsLargeScreen } from "@/hooks/useIsLargeScreen";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 // lib imports
 import { spinOnHover } from "@/utils/animate";
@@ -13,7 +13,7 @@ import { Technology } from "../TechStackList";
 
 export default function TechnologyPill({ tech, reducedMotion }: { tech: Technology, reducedMotion: boolean }) {
   const animControls = useAnimation();
-  const isLargeScreen = useIsLargeScreen();
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
   
   
   // animate sequentially on tap

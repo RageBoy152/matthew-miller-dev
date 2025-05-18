@@ -24,14 +24,15 @@ This is a web development portfolio website for Matthew Miller (me).
 
 
 ### Other
-- [ ] Add project showcase lightbox
-- [ ] Some mobile buttons are too small padding-wise
+- [ ] Tech icons are too low quality for mobile
 
 - [ ] Add hero motion background
 - [ ] Change active links with scroll
 
-- [ ] Add client-side validation to contact form
-- [ ] Polish SEO
+- [ ] *Add functionality to contact form
+- [ ] *Polish SEO
 
+- [X] Some mobile buttons are too small padding-wise
+- [X] Add project showcase lightbox
 - [X] Add tab switcher on education (use motion)
 - [X] Add projects timeline

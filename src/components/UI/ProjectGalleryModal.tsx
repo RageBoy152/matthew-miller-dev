@@ -4,8 +4,11 @@ import { featuredProjects } from "../ProjectsList";
 import { Project } from "../ProjectCard";
 import Image from "next/image";
 import { MouseEvent, useEffect, useState } from "react";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function ProjectGalleryModal({ activeProjectModal, setActiveProjectModal }: { activeProjectModal: string | null, setActiveProjectModal: setActiveProjectModalType }) {
+  const isMediumScreen = useMediaQuery("(min-width: 768px)");
+  
   // fallback to last project for labels - smooths close transition from setting active project to null before modal fades
   const [lastProject, setLastProject] = useState<Project | null>(null);
 
@@ -25,26 +28,27 @@ export default function ProjectGalleryModal({ activeProjectModal, setActiveProje
 
 
   return (
-    <div onClick={(e) => closeModal(e, true)} className={`py-16 md:py-32 fixed top-0 start-0 z-50 w-full h-full bg-black/80 transition-opacity ${activeProjectModal ? "" : "opacity-0 pointer-events-none"}`}>
+    <div onClick={(e) => closeModal(e, true)} className={`py-8 md:py-32 fixed top-0 start-0 z-50 w-full h-full bg-black lg:bg-black/80 transition-opacity ${activeProjectModal ? "" : "opacity-0 pointer-events-none"}`}>
       <div className="
       w-10/12 md:w-3/4 2xl:w-1/2
       h-min max-h-full mx-auto flex flex-col items-center gap-6">
 
         {/*  MODAL HEADER  */}
         <div className="flex w-full justify-between">
-          <h2 className="font-space-mono uppercase text-2xl md:text-4xl text-white">{project?.label ?? lastProject?.label}</h2>
+          <div className="flex flex-col uppercase">
+            <p className="text-accent text-sm font-space-mono">Scrollable_Gallery</p>
+            <h2 className="text-3xl md:text-4xl text-white font-kanit">{project?.label ?? lastProject?.label}</h2>
+          </div>
           <button onClick={closeModal} aria-label="close" className="cursor-pointer aspect-square"><X className="mx-auto h-5 lg:h-6" /></button>
         </div>
 
         {/*  MODAL CONTENT  */}
-        <div className="flex flex-col w-full aspect-[9/16] md:aspect-auto h-full overflow-y-auto gap-8 pe-4 pb-4 scrollbar snap-y snap-mandatory">
+        <div className="flex flex-col w-full aspect-auto md:aspect-auto h-full overflow-y-auto gap-8 pe-4 pb-4 scrollbar snap-y snap-mandatory">
           {project?.images.map((img, i) => (
-            <div key={img} className="md:w-full h-full md:h-max aspect-[9/16] md:aspect-video bg-place-black shadow-accent flex items-center justify-center snap-start">
-              {/* <Image fill objectFit="cover" src={`featured-projects/${project.id}/${img}`} alt={`${project.label} website showcase`} /> */}
+            <div key={img+i} className="md:w-full h-[800px] shrink-0 md:h-max aspect-auto md:aspect-video bg-place-black shadow-accent flex items-center justify-center snap-start relative">
+              <Image placeholder="empty" sizes="(min-width: 1536px) 50vw, (min-width: 768px) 75vw, 90vw" fill className="object-cover object-top" src={`/featured-projects/${project.id}/${img.replace('[SIZE]', isMediumScreen ? "desktop" : "mobile")}`} alt={`${project.label} website showcase`} />
             </div>
           ))}
-          
-          <div className="md:w-full h-full md:h-max aspect-[9/16] md:aspect-video bg-place-black shadow-accent flex items-center justify-center snap-start"></div>
         </div>
       </div>
     </div>

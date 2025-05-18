@@ -20,7 +20,7 @@ export const featuredProjects: Project[] = [
       "Jo Smith is a fictitious photographer from Dundee who was looking for a website to showcase her portfolio and increase client outreach.",
       "I undertook this project as part of my HND course and was able to freely explore a variety of current tools and technologies. I used this as an opportunity to try expanding my knowledge with react and learned Next.JS."
     ],
-    images: [""]
+    images: ["home-[SIZE].png", "weddings-[SIZE].png", "testimonials-[SIZE].png", "commercial-[SIZE].png"]
   },
   {
     id: "vinyls-online",
@@ -59,7 +59,7 @@ export const featuredProjects: Project[] = [
 export default function ProjectsList({ setActiveProjectModal }: { setActiveProjectModal: setActiveProjectModalType }) {
   return (
     <div className="flex flex-col w-full ms-auto py-16">
-      {featuredProjects.map((project, i) => <ProjectCard setActiveProjectModal={setActiveProjectModal} key={project.id} projectIndex={i} lastProject={i+1==featuredProjects.length} project={project} />)}
+      {featuredProjects.map((project, i) => <ProjectCard setActiveProjectModal={setActiveProjectModal} key={project.id} projectIndex={i} prevYear={featuredProjects[i-1]?.year} lastProject={i+1==featuredProjects.length} project={project} />)}
     </div>
   );
 }
