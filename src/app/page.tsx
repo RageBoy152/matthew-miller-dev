@@ -16,6 +16,7 @@ import ProjectGalleryModal from "@/components/UI/ProjectGalleryModal";
 // motion
 import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible } from "@/utils/animate";
+import NavHeader from "@/components/NavHeader";
 
 
 export type setActiveProjectModalType = (projectId: string | null) => void;
@@ -34,12 +35,19 @@ export default function Home() {
   const portraitRef = useRef<HTMLDivElement>(null);
 
 
+  // toggle mobile nav
+  const [navActive, setNavActive] = useState(false);
+  const navToggler = () => setNavActive(!navActive);
+
+
   return (
     <>
       <ProjectGalleryModal activeProjectModal={activeProjectModal} setActiveProjectModal={setActiveProjectModal} />
 
 
-      <Header portraitRef={portraitRef} sectionStartRefs={sectionStartRefs} />
+      <NavHeader sectionStartRefs={sectionStartRefs} navActive={navActive} navToggler={navToggler} />
+      <Header portraitRef={portraitRef} sectionStartRefs={sectionStartRefs} navActive={navActive} navToggler={navToggler} />
+
 
       <main ref={(el) => { if (el) sectionStartRefs.current[0] = el; }} className="lg:w-7/12 lg:ms-auto min-h-dvh">
         <div className="w-10/12 lg:w-8/12 mx-auto">
