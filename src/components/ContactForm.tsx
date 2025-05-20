@@ -8,7 +8,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible, spinOnHover } from "@/utils/animate";
 
 // types
-import { FormEvent, MouseEvent, useState } from "react";
+import { FormEvent, MouseEvent, useRef, useState } from "react";
 import SocialLinks from "./UI/SocialLinks";
 
 
@@ -29,13 +29,17 @@ export default function ContactForm() {
   const [oldErrorMsg, setOldErrorMsg] = useState<String | null>(null);
 
 
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+
   // show form submit feedback to user
-  const showFormRes = async (sucess: boolean, statusText: string, formElem: HTMLFormElement) => {
+  const showFormRes = async (sucess: boolean, statusText: string) => {
     // form status = finished | error
     setFormStatus(sucess ? FormStatus.Finished : FormStatus.Error);
 
     // clear inputs
-    formElem.reset();
+    formRef?.current?.reset();
+    setMsgValue("");
 
     // show error modal on error
     if (!sucess) setErrorMsg(statusText);
@@ -69,12 +73,12 @@ export default function ContactForm() {
       if (!res.ok) throw `Error ${res.status} ${res.statusText == "" ? "" : `| ${res.statusText}`}`;
     
       // form submit success
-      showFormRes(true, res.statusText, e.currentTarget);
+      showFormRes(true, res.statusText);
     })
     // @ts-ignore
     .catch((err) => {
       // form submit error
-      showFormRes(false, err.toString(), e.currentTarget);
+      showFormRes(false, err.toString());
     })
   }
   
@@ -117,7 +121,7 @@ export default function ContactForm() {
 
 
 
-      <form name="contact" onSubmit={handleFormSubmit} className="flex flex-col gap-5">
+      <form ref={formRef} name="contact" onSubmit={handleFormSubmit} className="flex flex-col gap-5">
         <input type="hidden" name="form-name" value="contact" />
 
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "5%", once: true })} className="flex flex-col gap-1">
