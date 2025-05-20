@@ -100,7 +100,7 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
       removeEventListener("scroll", handleScroll);
     }
 
-  }, [sectionStartRefs]);
+  }, [sectionStartRefs, activeLink]);
 
 
 

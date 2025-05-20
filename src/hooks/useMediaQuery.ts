@@ -18,7 +18,7 @@ export function useMediaQuery(query: string) {
     // clean up event listener on unmount
     return () => mq.removeEventListener("change", update);
 
-  }, []);
+  }, [query]);
 
   return isQuery;
 }

@@ -22,11 +22,6 @@ import { Spotlight } from "@/components/UI/SpotlightNew";
 
 export type setActiveProjectModalType = (projectId: string | null) => void;
 
-export enum ColorTheme { Dark, Light, System };
-const localStorageKeys = {
-  preferedColorTheme: "matthewmillerdev.userPrefs.theme"
-}
-
 
 export default function Home() {
   const reducedMotion = useReducedMotion();
@@ -98,7 +93,7 @@ export default function Home() {
               <motion.p
                 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })}
                 className="text-lg">
-                Hello, I'm Matthew, an 18 year old frontend developer based in Scotland.  I've loved making things for the web since the first HTML class in high school.
+                Hello, I&apos;m Matthew, an 18 year old frontend developer based in Scotland.  I&apos;ve loved making things for the web since the first HTML class in high school.
               </motion.p>
 
               <motion.p
