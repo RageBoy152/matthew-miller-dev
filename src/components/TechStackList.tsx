@@ -14,19 +14,19 @@ export type Technology = {
 
 const featuredTechnologies: Technology[][] = [
   [
-    { label: "React.JS", iconName: "React.svg" },
-    { label: "Next.JS", iconName: "NextJS.svg" },
-    { label: "Tailwind_CSS", iconName: "TailwindCSS.svg" },
+    { label: "React.JS", iconName: "React.png" },
+    { label: "Next.JS", iconName: "NextJS.png" },
+    { label: "Tailwind_CSS", iconName: "TailwindCSS.png" },
   ],
   [
-    { label: "Express.JS", iconName: "ExpressJS.svg" },
-    { label: "Socket.IO", iconName: "SocketIO.svg" },
-    { label: "Node.JS", iconName: "NodeJS.svg" },
-    { label: "Mongo_DB", iconName: "MongoDB.svg" },
+    { label: "Express.JS", iconName: "ExpressJS.png" },
+    { label: "Socket.IO", iconName: "SocketIO.png" },
+    { label: "Node.JS", iconName: "NodeJS.png" },
+    { label: "Mongo_DB", iconName: "MongoDB.png" },
   ],
   [
-    { label: "GitHub", iconName: "GitHub.svg" },
-    { label: "Netlify", iconName: "Netlify.svg" },
+    { label: "GitHub", iconName: "GitHub.png" },
+    { label: "Netlify", iconName: "Netlify.png" },
   ]
 ]
 

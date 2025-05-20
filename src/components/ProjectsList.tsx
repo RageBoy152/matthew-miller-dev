@@ -22,7 +22,7 @@ export const featuredProjects: Project[] = [
       "Jo Smith is a fictitious photographer from Dundee who was looking for a website to showcase her portfolio and increase client outreach.",
       "I undertook this project as part of my HND course and was able to freely explore a variety of current tools and technologies. I used this as an opportunity to try expanding my knowledge with react and learned Next.JS."
     ],
-    images: ["home-[SIZE].png", "weddings-[SIZE].png", "testimonials-[SIZE].png", "commercial-[SIZE].png"]
+    images: ["home-[SIZE].jpg", "weddings-[SIZE].jpg", "testimonials-[SIZE].jpg", "commercial-[SIZE].jpg"]
   },
   {
     id: "vinyls-online",
@@ -37,7 +37,7 @@ export const featuredProjects: Project[] = [
       "Vinyls Online is an online market place where users can either search for vinyls for their collection or upload their own vinyls for others to purchase.",
       "I used PHP and MySQL to bring this site to life after creating initial brand designs in 2023, creating a full interactive CRUD app with an account system."
     ],
-    images: [""]
+    images: ["home-[SIZE].jpg", "titles-[SIZE].jpg", "search-[SIZE].jpg", "details-[SIZE].jpg"]
   },
   {
     id: "multicast",
@@ -52,7 +52,7 @@ export const featuredProjects: Project[] = [
       "As I found an interest in the SpaceX Starship program, I created Multicast to enhance my hobby of observing the 24/7 development of the program.",
       "Multicast allows desktop users to configure output layouts, add various YouTube streams of their choosing and simultaneously watch any selection of feeds."
     ],
-    images: [""]
+    images: ["app-dashboard.jpg", "app-output-4.jpg", "app-settings.jpg", "app-output-9.jpg"]
   }
 ];
 

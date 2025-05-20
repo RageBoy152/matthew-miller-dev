@@ -13,7 +13,5 @@ This is a web development portfolio website for Matthew Miller (me).
 
 ### Todo (temp internal use)
 
-- [ ] Gather & optimize image assets - project images + tech icons
-
 - [ ] *Add functionality to contact form
 - [ ] *Polish SEO

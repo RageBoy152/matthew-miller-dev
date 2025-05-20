@@ -213,7 +213,7 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
 
       <img
       fetchPriority="high"
-      src="/hero-placeholder.jpg" alt="hero image"
+      src="/hero-image.jpg" alt="hero image"
       className="h-full w-full object-cover absolute top-0 -z-1 opacity-100 hero-bg" />
 
     </motion.div>

@@ -67,7 +67,7 @@ type spinOnHoverProps = {
   offHoverBounce?: number
 }
 
-// animate with one 360 spin on hover
+// animate with one 360 spin on hover - used on contact form submit
 export function spinOnHover({...props}: spinOnHoverProps) {
   return {
     variants: {
