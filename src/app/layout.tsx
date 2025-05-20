@@ -29,6 +29,7 @@ const blinker = Blinker({
 // define global metadata
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://matthewmillerdev.netlify.app'),
   title: "Matthew Miller Dev",
   description: "Frontend developer experienced in React.JS, Next.JS and building beautiful UI/UX.",
   keywords: [
@@ -52,7 +53,10 @@ export const metadata: Metadata = {
     "Single Page Applications",
     "Developer Portfolio",
     "Matthew Miller"
-  ]
+  ],
+  openGraph: {
+    images: "/opengraph-image.png"
+  }
 };
 
 
