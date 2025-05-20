@@ -11,15 +11,18 @@ import { Metadata } from "next";
 
 const spaceMono = Space_Mono({
   variable: "--font-space-mono",
-  weight: ["400", "700"]
+  weight: ["400", "700"],
+  subsets: ["latin"]
 });
 const kanit = Kanit({
   variable: "--font-kanit",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"]
 });
 const blinker = Blinker({
   variable: "--font-blinker",
-  weight: ["100", "200", "300", "400", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "600", "700", "800", "900"],
+  subsets: ["latin"]
 });
 
 
