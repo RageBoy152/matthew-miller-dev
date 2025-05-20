@@ -59,7 +59,7 @@ export default function ProjectGalleryModal({ activeProjectModal, setActiveProje
         <div className="flex flex-col w-full aspect-auto md:aspect-auto h-full overflow-y-auto gap-8 pe-4 pb-4 scrollbar">
           {project?.images.map((img, i) => (
             <div key={img+i} className="md:w-full h-max bg-place-black shadow-accent flex items-center justify-center relative">
-              <img className="object-contain object-top" src={`/featured-projects/${project.id}/${img.replace('[SIZE]', isMediumScreen ? "desktop" : "mobile")}`} alt={`${project.label} website showcase`} />
+              <img onLoad={(e) => e.currentTarget.classList.remove("opacity-0")} className="object-contain object-top transition-opacity opacity-0" src={`/featured-projects/${project.id}/${img.replace('[SIZE]', isMediumScreen ? "desktop" : "mobile")}`} alt={`${project.label} website showcase`} />
             </div>
           ))}
         </div>
