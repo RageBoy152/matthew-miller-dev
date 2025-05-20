@@ -13,5 +13,4 @@ This is a web development portfolio website for Matthew Miller (me).
 
 ### Todo (temp internal use)
 
-- [ ] *Add functionality to contact form
 - [ ] *Polish SEO

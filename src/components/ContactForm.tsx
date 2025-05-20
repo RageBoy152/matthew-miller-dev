@@ -30,9 +30,12 @@ export default function ContactForm() {
 
 
   // show form submit feedback to user
-  const showFormRes = async (sucess: boolean, statusText: string) => {
+  const showFormRes = async (sucess: boolean, statusText: string, formElem: HTMLFormElement) => {
     // form status = finished | error
     setFormStatus(sucess ? FormStatus.Finished : FormStatus.Error);
+
+    // clear inputs
+    formElem.reset();
 
     // show error modal on error
     if (!sucess) setErrorMsg(statusText);
@@ -55,7 +58,7 @@ export default function ContactForm() {
 
 
     // send post req to netlify forms with data
-    fetch("/netlifyforms.html", {
+    fetch("/netlifyforms", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       // @ts-ignore
@@ -63,15 +66,15 @@ export default function ContactForm() {
     })
     .then((res) => {
       // check res
-      if (!res.ok) throw `Error ${res.status} | ${res.statusText}`;
+      if (!res.ok) throw `Error ${res.status} ${res.statusText == "" ? "" : `| ${res.statusText}`}`;
     
       // form submit success
-      showFormRes(true, res.statusText);
+      showFormRes(true, res.statusText, e.currentTarget);
     })
     // @ts-ignore
     .catch((err) => {
       // form submit error
-      showFormRes(false, err.toString());
+      showFormRes(false, err.toString(), e.currentTarget);
     })
   }
   
@@ -119,17 +122,17 @@ export default function ContactForm() {
 
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "5%", once: true })} className="flex flex-col gap-1">
           <label htmlFor="name" className="uppercase font-space-mono text-gray">Name</label>
-          <input type="text" name="name" placeholder="John Doe" className="bg-place-black px-4 py-3"  />
+          <input type="text" name="name" placeholder="John Doe" className="bg-place-black px-4 py-3" required />
         </motion.div>
 
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.05, initialYOffset: "5%", once: true })} className="flex flex-col gap-1">
           <label htmlFor="email" className="uppercase font-space-mono text-gray">Email</label>
-          <input type="email" name="email" placeholder="example@domain.com" className="bg-place-black px-4 py-3"  />
+          <input type="email" name="email" placeholder="example@domain.com" className="bg-place-black px-4 py-3" required />
         </motion.div>
 
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="flex flex-col gap-1">
           <label htmlFor="message" className="uppercase font-space-mono text-gray">Message</label>
-          <textarea name="message" placeholder="Your message here..." value={msgValue} onInput={(e) => setMsgValue(e.currentTarget.value)} rows={3} maxLength={500} className="bg-place-black px-4 py-3 min-h-fit resize-none" ></textarea>
+          <textarea name="message" placeholder="Your message here..." value={msgValue} onInput={(e) => setMsgValue(e.currentTarget.value)} rows={3} maxLength={500} className="bg-place-black px-4 py-3 min-h-fit resize-none" required></textarea>
           <p className="text-sm text-gray">{msgValue.length}/500</p>
         </motion.div>
 
