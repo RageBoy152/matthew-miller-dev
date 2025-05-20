@@ -1,7 +1,7 @@
 // icons
 import { CircleCheckBig, Frown, Send, X } from "lucide-react";
 import { Bouncy } from "ldrs/react";
-import 'ldrs/react/Bouncy.css';
+import "ldrs/react/Bouncy.css";
 
 // motion
 import { motion, useReducedMotion } from "motion/react";
@@ -55,7 +55,7 @@ export default function ContactForm() {
 
 
     // send post req to netlify forms with data
-    fetch("/netlifyForms.html", {
+    fetch("/netlifyforms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       // @ts-ignore
