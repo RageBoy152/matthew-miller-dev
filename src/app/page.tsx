@@ -4,9 +4,10 @@
 // react
 import { useRef, useState } from "react";
 
-// component
+// components
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
+import NavHeader from "@/components/NavHeader";
 import ProjectsList from "@/components/ProjectsList";
 import TabSwitcher from "@/components/EducationTabSwitch";
 import TechStackList from "@/components/TechStackList";
@@ -16,10 +17,15 @@ import ProjectGalleryModal from "@/components/UI/ProjectGalleryModal";
 // motion
 import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible } from "@/utils/animate";
-import NavHeader from "@/components/NavHeader";
+import { Spotlight } from "@/components/UI/SpotlightNew";
 
 
 export type setActiveProjectModalType = (projectId: string | null) => void;
+
+export enum ColorTheme { Dark, Light, System };
+const localStorageKeys = {
+  preferedColorTheme: "matthewmillerdev.userPrefs.theme"
+}
 
 
 export default function Home() {
@@ -34,10 +40,10 @@ export default function Home() {
   // ref for portrait image elem - used for toggling mobile navbar bg
   const portraitRef = useRef<HTMLDivElement>(null);
 
-
   // toggle mobile nav
   const [navActive, setNavActive] = useState(false);
   const navToggler = () => setNavActive(!navActive);
+
 
 
   return (
@@ -47,6 +53,13 @@ export default function Home() {
 
       <NavHeader sectionStartRefs={sectionStartRefs} navActive={navActive} navToggler={navToggler} />
       <Header portraitRef={portraitRef} sectionStartRefs={sectionStartRefs} navActive={navActive} navToggler={navToggler} />
+
+
+      <div className="absolute top-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="w-full lg:w-5/12 h-full relative">
+          <Spotlight />
+        </div>
+      </div>
 
 
       <main ref={(el) => { if (el) sectionStartRefs.current[0] = el; }} className="lg:w-7/12 lg:ms-auto min-h-dvh">

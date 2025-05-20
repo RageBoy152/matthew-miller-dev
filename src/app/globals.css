@@ -17,10 +17,6 @@
   --font-blinker: var(--font-blinker);
 
 
-  /*  hero bg image (probably temp)  */
-  --background-image-hero: url("/hero-placeholder.jpg");
-
-
   /*  custom accent shadow  */
   --shadow-accent: 4px 4px 3px rgba(225, 102, 25, .75);
 
@@ -33,9 +29,35 @@
 
 
 
+/*  scrollbar - for scrollable gallery  */
+
 @supports (scrollbar-width: thin) {
   .scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #eee #444;
+  }
+}
+
+
+
+/*  hero bg opacity mask  */
+
+.hero-bg {
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  mask-size: 100% 100%;
+  
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-size: 100% 100%;
+}
+
+
+
+/*  remove bg opacity mask on mobile - 100vw hero  */
+
+@media only screen and (max-width: 1023px) {
+  .hero-bg {
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 100%);
+
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 100%);
   }
 }

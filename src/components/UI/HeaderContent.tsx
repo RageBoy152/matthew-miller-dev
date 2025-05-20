@@ -9,11 +9,13 @@ import Link from "next/link";
 import SocialLinks from "./SocialLinks";
 
 // icons
-import { MoveRight } from "lucide-react";
+import { Laptop, Moon, MoveRight, Sun } from "lucide-react";
 
 // motion
 import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { animOnVisible } from "@/utils/animate";
+import { Spotlight } from "./SpotlightNew";
+import Image from "next/image";
 
 
 // hard coded data for navbar links
@@ -123,7 +125,6 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
         // fade navbar in on active
         await controls.start({ opacity: 1 });
       } else {
-        console.log("FADING OUT")
         // fade out on navbar close
         await controls.start({ opacity: 0 });
         
@@ -142,10 +143,10 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
       animate={controls}
       initial={{ opacity: 0 }}
       transition={{ duration: 0.4, type: "spring", bounce: 0 }}
-      className="bg-hero h-dvh"
+      className="h-dvh relative"
     >
       <div className="w-10/12 md:w-8/12 mx-auto h-full flex flex-col py-8 pb-16 md:py-16">
-        
+
 
         {/*  HEADER HERO  */}
 
@@ -179,6 +180,7 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
         </div>
 
 
+
         {/*  HEADER NAV  */}
 
         <div className="flex flex-col w-fit ms-auto items-end gap-1 uppercase font-space-mono">
@@ -208,6 +210,12 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
         </div>
       
       </div>
+
+      <img
+      fetchPriority="high"
+      src="/hero-placeholder.jpg" alt="hero image"
+      className="h-full w-full object-cover absolute top-0 -z-1 opacity-100 hero-bg" />
+
     </motion.div>
   );
 }

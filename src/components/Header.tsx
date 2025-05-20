@@ -15,7 +15,7 @@ export default function Header({ sectionStartRefs, portraitRef, navActive, navTo
   portraitRef: RefObject<HTMLDivElement | null>;
   navActive: boolean;
   navToggler: () => void;
-}) {  
+}) {
 
 
   return (

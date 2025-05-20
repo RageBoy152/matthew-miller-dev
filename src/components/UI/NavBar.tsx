@@ -38,14 +38,14 @@ export default function NavBar({ isStatic, isNavActive, navToggler, portraitRef 
   return (
     <nav className={`
       ${isStatic ? "absolute!" : `${isNavbarFixed ? "bg-black/100" : "-translate-y-full"} fixed lg:hidden`}
-      transition-all duration-200 top-0 start-0 lg:relative z-10 bg-none w-full uppercase font-space-mono text-gray`}>
+      transition-all duration-200 top-0 start-0 lg:relative z-10 py-2 bg-none w-full uppercase font-space-mono text-gray`}>
       
       <div className="w-10/12 md:w-8/12 mx-auto flex items-center justify-between">
 
         <p className="py-8 cursor-default">Matthew_Miller.dev</p>
 
         {(!isStatic || (isStatic && isNavActive)) && (
-          <button className="lg:hidden cursor-pointer ps-8 py-8" onClick={navToggler}>
+          <button className="lg:hidden cursor-pointer ps-8 py-2" onClick={navToggler}>
             {isNavActive ? <X className="h-6" /> : <AlignRight className="h-5" />}
           </button>
         )}

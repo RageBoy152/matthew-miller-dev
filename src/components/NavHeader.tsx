@@ -12,6 +12,7 @@ import HeaderContent from "./UI/HeaderContent";
 import { motion } from "motion/react";
 
 
+
 export default function NavHeader({ sectionStartRefs, navActive, navToggler }: {
   sectionStartRefs: RefObject<HTMLElement[]>;
   navActive: boolean;
