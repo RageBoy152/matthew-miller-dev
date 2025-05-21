@@ -28,8 +28,11 @@ export default function NavBar({ isStatic, isNavActive, navToggler, portraitRef 
       setIsNavbarFixed(portraitTop < 50);
     }
 
-    // add event listener and cleanup on unmount
+    // check if navbar should be fixed on mount and scroll
+    handleScroll();
     addEventListener("scroll", handleScroll);
+
+    // remove event listener on unmount
     return () => removeEventListener("scroll", handleScroll);
   }, [portraitRef]);
 
