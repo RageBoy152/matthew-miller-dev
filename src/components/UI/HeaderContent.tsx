@@ -81,12 +81,10 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
 
     const handleScroll = () => {
       sectionStartRefs.current?.forEach((section, index) => {
-        if (index < activeLink) return;
-
         // get y pos of section relative to top of the page
         const sectionTop = section.getBoundingClientRect().top - sectionStartRefs.current[0].getBoundingClientRect().top;
         
-        if (window.scrollY >= sectionTop) {
+        if (window.scrollY + 200 >= sectionTop) {
           // scroll pos is higher than the current section pos
           setActiveLink(index);
           return;
@@ -94,6 +92,8 @@ export default function HeaderContent({ sectionStartRefs, isNavActive, isNavHead
       });
     };
 
+    // calc active link on mount and on scroll
+    handleScroll();
     addEventListener("scroll", handleScroll);
 
     return () => {
