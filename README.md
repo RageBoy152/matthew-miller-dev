@@ -9,8 +9,3 @@ This is a web development portfolio website for Matthew Miller (me).
 
 ### Hosted With
 - Netlify
-
-
-### Todo (temp internal use)
-
-- [ ] *Polish SEO
