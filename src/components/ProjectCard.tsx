@@ -46,7 +46,7 @@ export default function ProjectCard({ project, projectIndex, prevYear, lastProje
       <div className={`w-4/6 ${lastProject ? "" : "pb-32"}`}>
         <motion.div {...animOnVisible({ reducedMotion: reducedMotion, delay: projectIndex/5, initialYOffset: "10%", once: true })} className="flex flex-col gap-4">
 
-          <div className="bg-place-black aspect-[16/9] shadow-accent relative group">
+          <div className="bg-place-black aspect-[16/9] h-full shadow-accent relative group">
             <div onClick={() => setActiveProjectModal(project.id)} aria-label="full screen" className="absolute w-full h-full lg:bg-black/50 flex justify-end lg:justify-center items-end lg:items-center cursor-pointer lg:opacity-0 group-hover:opacity-100 transition-opacity">
               <button className="p-3 bg-black/50 lg:p-0 lg:bg-transparent cursor-pointer"><Expand /></button>
             </div>
