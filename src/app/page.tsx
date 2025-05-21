@@ -18,6 +18,7 @@ import ProjectGalleryModal from "@/components/UI/ProjectGalleryModal";
 import { motion, useReducedMotion } from "motion/react";
 import { animOnVisible } from "@/utils/animate";
 import { Spotlight } from "@/components/UI/SpotlightNew";
+import Image from "next/image";
 
 
 export type setActiveProjectModalType = (projectId: string | null) => void;
@@ -63,29 +64,34 @@ export default function Home() {
 
           {/*  ABOUT SECTION  */}
 
-          <section id="about" className="md:w-3/4 mx-auto flex flex-col gap-4 xs:block relative xs:pt-70 mb-15 mt-40">
+          <section id="about" className="w-full 2xl:w-4/5 mx-auto flex flex-col relative pt-16">
+
+
+            {/*  ABOUT IMAGE  */}
 
             <motion.div
               ref={portraitRef}
               {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "5%", once: true })}
               className="
-              bg-place-black aspect-4/5 shadow-accent -z-10
+              bg-accent aspect-4/5 shadow-accent -z-10
               text-gray font-space-mono text-sm
-              w-3/4 xs:w-3/5 sm:w-1/2 lg:w-4/5 xl:w-3/5
-              xs:absolute end-0 xs:bottom-80 sm:bottom-70 lg:bottom-[480px] 2lg:bottom-[440px] xl:bottom-80 2xl:bottom-70
-              flex justify-center items-center ms-auto xs:ms-0"
+              w-1/2 lg:w-3/5
+              flex justify-center items-center ms-auto relative"
             >
-              headshot.jpg
+              <Image className="object-cover object-bottom bg-blend-color-dodge opacity-80 bg-place-black" fill priority sizes="(max-width: 1024px) 40vw (min-width: 1023px) 80vw" src="/matthewmiller-headshot-3.png" alt="Matthew Miller" />
             </motion.div>
 
-            <div className="flex flex-col gap-3 w-5/6 2xl:w-4/5 pt-4 pe-3 bg-black">
+
+            {/*  ABOUT TEXT  */}
+            
+            <div className="flex flex-col gap-3 w-3/4 lg:w-4/5 pt-4 pe-3 bg-black relative mt-4 lg:-mt-[100px]">
 
               <div className="uppercase mb-2">
                 <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                   Hello_World
                 </motion.p>
 
-                <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-5xl lg:text-6xl text-white">
+                <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-4xl xs:text-5xl lg:text-6xl text-white">
                   About Me
                 </motion.h2>
               </div>
@@ -122,7 +128,7 @@ export default function Home() {
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 My_Work
               </motion.p>
-              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-5xl lg:text-6xl text-white">
+              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-4xl xs:text-5xl lg:text-6xl text-white">
                 Experienced Creator
               </motion.h2>
             </div>
@@ -140,7 +146,7 @@ export default function Home() {
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 Learning
               </motion.p>
-              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-5xl lg:text-6xl text-white">
+              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-4xl xs:text-5xl lg:text-6xl text-white">
                 Relevant Education
               </motion.h2>
             </div>
@@ -158,7 +164,7 @@ export default function Home() {
               <motion.p {...animOnVisible({ reducedMotion: reducedMotion, initialYOffset: "10%", once: true })} className="text-accent font-space-mono">
                 Get_in_touch
               </motion.p>
-              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-5xl lg:text-6xl text-white">
+              <motion.h2 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })} className="font-kanit text-4xl xs:text-5xl lg:text-6xl text-white">
                 Contact Me
               </motion.h2>
             </div>

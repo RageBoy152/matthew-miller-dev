@@ -56,7 +56,7 @@ export default function ProjectCard({ project, projectIndex, prevYear, lastProje
           <hr className="text-gray/25" />
           
           <div className="flex flex-col uppercase font-space-mono">
-            <div className="flex gap-6 items-center justify-between">
+            <div className="flex gap-6 items-center justify-between flex-wrap xxs:flex-nowrap">
               <h3 className="text-2xl md:text-4xl text-white">{project.label}</h3>
 
               <div className="flex gap-4">
