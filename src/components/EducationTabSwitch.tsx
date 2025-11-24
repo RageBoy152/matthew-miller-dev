@@ -16,10 +16,10 @@ import { motion, Variants } from "motion/react";
 
 const educationData: educationTabProps[] = [
   {
-    id: "bcs",
+    id: "bsc",
     startDate: "Sep 2025",
     endDate: "Jun 2026",
-    title: "BCs Digital Development",
+    title: "BSc Digital Development",
     grade: "TBD",
     technologies: [
       "Project_Management",
