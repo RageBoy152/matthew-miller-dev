@@ -27,6 +27,7 @@ const featuredTechnologies: Technology[][] = [
   [
     { label: "GitHub", iconName: "GitHub.png" },
     { label: "Netlify", iconName: "Netlify.png" },
+    { label: "Vercel", iconName: "Vercel.png" },
   ]
 ]
 

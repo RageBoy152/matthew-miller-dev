@@ -16,11 +16,31 @@ import { motion, Variants } from "motion/react";
 
 const educationData: educationTabProps[] = [
   {
+    id: "bcs",
+    startDate: "Sep 2025",
+    endDate: "Jun 2026",
+    title: "BCs Digital Development",
+    grade: "TBD",
+    technologies: [
+      "Project_Management",
+      "Professional_Practices",
+      "DevOps",
+      "Data_Science",
+      "Blazor_C#",
+      "Java"
+    ],
+    content: [
+      "So far in my degree, I've looked at project management methodologies and how to apply them in IT projects, the data science life cycle and how to source, clean, analyse and vizualize data as well as how to build predictive and classification models.",
+      "I've also covered the more acaemic side of computing with units covering profesional institutions, ethics as well as laws and regulations in IT.",
+      "In the coming year, I'll be diving deeper into coding, exploring DevOps, developing mobile applications and being introduced to OOP with Blazor and C#."
+    ]
+  },
+  {
     id: "hnd",
     startDate: "Aug 2024",
     endDate: "Jun 2025",
     title: "HND Web Dev & Digital Design",
-    grade: "TBD",
+    grade: "A",
     technologies: [
       "Bootstrap",
       "UX",

@@ -105,7 +105,7 @@ export default function Home() {
               <motion.p
                 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.2, initialYOffset: "5%", once: true })}
                 className="text-lg">
-                Today I study web development and digital design at HND level.  In my spare time, I enjoy designing and building passion projects to gain real experience creating useful and functional web apps.
+                Today I'm working towards a BCs in Digital Development.  In my spare time, I enjoy designing and building passion projects to gain real experience creating useful and functional web apps.
               </motion.p>
             
             </div>

@@ -10,6 +10,21 @@ import ProjectCard, { Project } from "./ProjectCard";
 
 export const featuredProjects: Project[] = [
   {
+    id: "next-spaceflight",
+    label: "Next Spaceflight",
+    year: 2025,
+    monthStart: "JUN",
+    monthEnd: "AUG",
+    preview: "https://nextspaceflight.com",
+    technologies: ["Next.JS", "Tailwind_CSS", "Django"],
+    text: [
+      "Next Spaceflight is a resource for spaceflight enthusiasts to stay updated with upcoming launches.",
+      "During this summer internship, my goal was to redesign and build a new front-end for the previously outdated site bringing the modern, cleaner design from the app to the website.",
+      "This was an incredible oppertunity and showed me how to work as part of a development team as well as giving me exposure to use tools like Mapbox, GCP, Redis, Docker and Django."
+    ],
+    images: ["home-[SIZE].jpg", "launch-[SIZE].jpg", "locations-[SIZE].jpg"]
+  },
+  {
     id: "jo-smith",
     label: "Jo Smith Photos",
     year: 2025,
