@@ -99,7 +99,7 @@ export default function Home() {
               <motion.p
                 {...animOnVisible({ reducedMotion: reducedMotion, delay: 0.1, initialYOffset: "5%", once: true })}
                 className="text-lg">
-                Hello, I&apos;m Matthew, an 18 year old frontend developer based in Scotland.  I&apos;ve loved making things for the web since the first HTML class in high school.
+                Hello, I&apos;m Matthew, an 19 year old frontend developer based in Scotland.  I&apos;ve loved making things for the web since the first HTML class in high school.
               </motion.p>
 
               <motion.p
